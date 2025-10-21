@@ -1,0 +1,20 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.lesson-content pre {
+    background: #1e1e1e;
+    color: #dcdcdc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#timer {
+    font-size: 1rem;
+}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Курсы{% endblock %}
+
+{% block content %}
+<h2>Список курсов</h2>
+<div class="list-group">
+    {% for course in courses %}
+    <a href="{% url 'course_detail' course.pk %}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ course.title }}</h5>
+            <small>{{ course.published }}</small>
+        </div>
+        <p class="mb-1">{{ course.description|truncatechars:200 }}</p>
+        <small>Автор: {{ course.author.get_full_name|default:course.author.username }}</small>
+    </a>
+    {% empty %}
+    <p class="text-muted">Пока нет доступных курсов.</p>
+    {% endfor %}
+</div>
+{% endblock %}

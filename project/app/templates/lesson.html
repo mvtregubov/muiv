@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Урок{% endblock %}
+
+{% block content %}
+<article class="lesson">
+    {% if lesson %}
+    <header class="mb-3">
+        <h2>{{ lesson.title }}</h2>
+        <p class="text-muted">Курс: {{ lesson.course.title }}</p>
+    </header>
+    <section class="lesson-content">
+        {{ lesson.content|linebreaks }}
+    </section>
+    <div class="mt-4 d-flex gap-2">
+        {% if next_lesson %}
+        <a class="btn btn-outline-secondary" href="{% url 'lesson_detail' next_lesson.pk %}">Следующий урок</a>
+        {% endif %}
+        {% if quiz %}
+        <a class="btn btn-primary" href="{% url 'quiz' quiz.pk %}">Пройти тест</a>
+        {% endif %}
+    </div>
+    {% else %}
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+    <ul class="list-group">
+        {% for item in lessons %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ item.title }}</span>
+            <a href="{% url 'lesson_detail' item.pk %}" class="btn btn-sm btn-outline-primary">Открыть</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">Уроки ещё не добавлены.</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</article>
+{% endblock %}
