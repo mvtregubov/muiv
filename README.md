@@ -14,8 +14,6 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Главная страница доступна по адресу <http://127.0.0.1:8000/>.
-
 ## Развёртывание на PythonAnywhere
 
 1. **Подготовьте учётную запись.** Зарегистрируйтесь или авторизуйтесь на <https://www.pythonanywhere.com/>. На бесплатном тарифе достаточно одного веб-приложения.
